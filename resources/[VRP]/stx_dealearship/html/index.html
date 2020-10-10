@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html style="background-color: transparent">
+<head>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          int egrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+</head>
+<body>
+<div class="is-size-1-table has-text-left-tablet is-family-sans-serif is-flex-tablet-only " id="stxdealership" style="display: none">
+    <section class="hero is-dark" id="header-selection" >
+        <div class="hero-head" id="hero-header-div">
+            <header class="navbar" id="header-navbar" role="navigation" aria-label="main navigation">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item">
+                            <img src="img/logo_css_branco.png" alt="Logo">
+                        </a>
+                    </div>
+                    <div id="navBarMenuHeroC" class="navbar-menu">
+                        <div class="navbar-end">
+                            <a class="navbar-item is-active">
+                                Home
+                            </a>
+                            <a id="navbar-itens-container"> <!-- gerar altomaticamente menu-->
+                                <a class="navbar-item" id="navbar-car-item">
+                                    Carros <!-- TODO deveria estar no js para vim como configuracao -->
+                                </a>
+                                <a class="navbar-item" id="navbar-motorcycles-item">
+                                    Motos
+                                </a>
+                            </a>
+                            <span class="navbar-item">
+                                <a class="button is-light is-inverted" id="search-header-button">
+                                    <span class="icon">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                    <span>Buscar</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </section>
+    <div id="main-container">
+        <!--Home -->
+        <section class="section" id="home-menu" style="display: none">
+            <div class="container" id="home-container-wrapper">
+                <div id="home-banner"></div>
+                <div id="content">
+                    <div class="column is-invisible" id="homepage-container">
+                        <img src="img/logo_css_colorida.png" width="30%" height="30%">
+                        <h1 class="title" style="color: grey">Class Motors Market</h1>
+                    </div>
+
+                </div>
+            </div>
+            <h2 class="subtitle" id="subititle-homepage" style="color: black">
+                Um resource melhor que vrp_dealearship e nao veio do codepen!
+            </h2>
+        </section>
+        <!--Home end -->
+        <!--Car menu -->
+        <section class="section cards" id="vehicle-menu" style="display: none">
+            <!-- Cards -->
+            <div class="columns is-multiline">
+                <!-- Card -->
+                <div class="column is-square is-one-quarter">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="img/cars/Seven70.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <div>
+                                    <h1 class="title">Ferrari 432
+                                        <strong style="color: dodgerblue">| 1500 <i class="fas fa-coins"></i></strong>
+                                    </h1>
+                                </div>
+                                <p class="vehicle-description">Lorem ipsum dolor sit amet.</p>
+                                <button class="button is-success">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card end-->
+
+                <!-- Card -->
+                <div class="column is-square is-one-quarter">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="img/cars/Seven70.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <div>
+                                    <h1 class="title">Ferrari 432
+                                        <strong style="color: dodgerblue">| 1500 <i class="fas fa-coins"></i></strong>
+                                    </h1>
+                                </div>
+                                <p class="vehicle-description">Lorem ipsum dolor sit amet.</p>
+                                <button class="button is-success">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card end-->
+                <!-- Card -->
+                <div class="column is-square is-one-quarter">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="img/cars/Seven70.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <div>
+                                    <h1 class="title">Ferrari 432
+                                        <strong style="color: dodgerblue">| 1500 <i class="fas fa-coins"></i></strong>
+                                    </h1>
+                                </div>
+                                <p class="vehicle-description">Lorem ipsum dolor sit amet.</p>
+                                <button class="button is-success">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card end-->
+                <!-- Card -->
+                <div class="column is-square is-one-quarter">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="img/cars/Seven70.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <div>
+                                    <h1 class="title">Ferrari 432
+                                        <strong style="color: dodgerblue">| 1500 <i class="fas fa-coins"></i></strong>
+                                    </h1>
+                                </div>
+                                <p class="vehicle-description">Lorem ipsum dolor sit amet.</p>
+                                <button class="button is-success">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card end-->
+                <!-- Card -->
+                <div class="column is-square is-one-quarter">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="img/cars/Seven70.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <div>
+                                    <h1 class="title">Ferrari 432
+                                        <strong style="color: dodgerblue">| 1500 <i class="fas fa-coins"></i></strong>
+                                    </h1>
+                                </div>
+                                <p class="vehicle-description">Lorem ipsum dolor sit amet.</p>
+                                <button class="button is-success">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card end-->
+                <!-- Card -->
+                <div class="column is-square is-one-quarter">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="img/cars/Seven70.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <div>
+                                    <h1 class="title">Ferrari 432
+                                        <strong style="color: dodgerblue">| 1500 <i class="fas fa-coins"></i></strong>
+                                    </h1>
+                                </div>
+                                <p class="vehicle-description">Lorem ipsum dolor sit amet.</p>
+                                <button class="button is-success">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card end-->
+                <!-- Card -->
+                <div class="column is-square is-one-quarter">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="img/cars/Seven70.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <div>
+                                    <h1 class="title">Ferrari 432
+                                        <strong style="color: dodgerblue">| 1500 <i class="fas fa-coins"></i></strong>
+                                    </h1>
+                                </div>
+                                <p class="vehicle-description">Lorem ipsum dolor sit amet.</p>
+                                <button class="button is-success">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card end-->
+                <!-- Card -->
+                <div class="column is-square is-one-quarter">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="img/cars/Seven70.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <div>
+                                    <h1 class="title">Ferrari 432
+                                        <strong style="color: dodgerblue">| 1500 <i class="fas fa-coins"></i></strong>
+                                    </h1>
+                                </div>
+                                <p class="vehicle-description">Lorem ipsum dolor sit amet.</p>
+                                <button class="button is-success">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card end-->
+                <!-- Card -->
+                <div class="column is-square is-one-quarter">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="img/cars/Seven70.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <div>
+                                    <h1 class="title">Ferrari 432
+                                        <strong style="color: dodgerblue">| 1500 <i class="fas fa-coins"></i></strong>
+                                    </h1>
+                                </div>
+                                <p class="vehicle-description">Lorem ipsum dolor sit amet.</p>
+                                <button class="button is-success">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card end-->
+                <!-- Card -->
+                <div class="column is-square is-one-quarter">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="img/cars/Seven70.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <div>
+                                    <h1 class="title">Ferrari 432
+                                        <strong style="color: dodgerblue">| 1500 <i class="fas fa-coins"></i></strong>
+                                    </h1>
+                                </div>
+                                <p class="vehicle-description">Lorem ipsum dolor sit amet.</p>
+                                <button class="button is-success">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card end-->
+                <!-- Card -->
+                <div class="column is-square is-one-quarter">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="img/cars/Seven70.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <div>
+                                    <h1 class="title">Ferrari 432
+                                        <strong style="color: dodgerblue">| 1500 <i class="fas fa-coins"></i></strong>
+                                    </h1>
+                                </div>
+                                <p class="vehicle-description">Lorem ipsum dolor sit amet.</p>
+                                <button class="button is-success">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card end-->
+                <!-- Card -->
+                <div class="column is-square is-one-quarter">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="img/cars/Seven70.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <div>
+                                    <h1 class="title">Ferrari 432
+                                        <strong style="color: dodgerblue">| 1500 <i class="fas fa-coins"></i></strong>
+                                    </h1>
+                                </div>
+                                <p class="vehicle-description">Lorem ipsum dolor sit amet.</p>
+                                <button class="button is-success">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card end-->
+                <!-- Card -->
+                <div class="column is-square is-one-quarter">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="img/cars/Seven70.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <div>
+                                    <h1 class="title">Ferrari 432
+                                        <strong style="color: dodgerblue">| 1500 <i class="fas fa-coins"></i></strong>
+                                    </h1>
+                                </div>
+                                <p class="vehicle-description">Lorem ipsum dolor sit amet.</p>
+                                <button class="button is-success">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card end-->
+                <!-- Card -->
+                <div class="column is-square is-one-quarter">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="img/cars/Seven70.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <div>
+                                    <h1 class="title">Ferrari 432
+                                        <strong style="color: dodgerblue">| 1500 <i class="fas fa-coins"></i></strong>
+                                    </h1>
+                                </div>
+                                <p class="vehicle-description">Lorem ipsum dolor sit amet.</p>
+                                <button class="button is-success">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card end-->
+                <!-- Card -->
+                <div class="column is-square is-one-quarter">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="img/cars/Seven70.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <div>
+                                    <h1 class="title">Ferrari 432
+                                        <strong style="color: dodgerblue">| 1500 <i class="fas fa-coins"></i></strong>
+                                    </h1>
+                                </div>
+                                <p class="vehicle-description">Lorem ipsum dolor sit amet.</p>
+                                <button class="button is-success">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card end-->
+                <!-- Card -->
+                <div class="column is-square is-one-quarter">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="img/cars/Seven70.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="content">
+                                <div>
+                                    <h1 class="title">Ferrari 432
+                                        <strong style="color: dodgerblue">| 1500 <i class="fas fa-coins"></i></strong>
+                                    </h1>
+                                </div>
+                                <p class="vehicle-description">Lorem ipsum dolor sit amet.</p>
+                                <button class="button is-success">Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card end-->
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>

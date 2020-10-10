@@ -1,0 +1,53 @@
+#homepage-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#homepage-container>* {
+    margin: 0 10px;
+
+}
+
+#subititle-homepage {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#home-menu {
+    padding: 20px 24px;
+}
+
+#home-banner {
+    background: url("../img/BANNER_mec_SITE_carros_ga.png") no-repeat;
+    background-size: cover;
+    filter: blur(1px);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#home-container-wrapper {
+    padding: 20px 0;
+    margin-bottom: 25px;
+}
+
+#main-container {
+    height: 600px;
+    max-height: 600px;
+}
+
+#vehicle-menu {
+    height: 100%;
+    display: flex;
+    overflow-y: auto;
+    flex-direction: column;
+}
+
+.vehicle-description {
+    overflow: auto;
+    width: 100%;
+    height: 75px;
+}
+

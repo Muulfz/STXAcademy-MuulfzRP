@@ -1,0 +1,291 @@
+/*
+body {
+    background-image: url("img/base.png");
+}
+*/
+
+.inventory-card {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    margin-left: auto;
+    margin-right: auto;
+    width: 625px;
+    height: 561px;
+    left: 250px;
+    top: 226px;
+
+    background: rgba(130, 130, 130, 0.63);
+    box-shadow: 0px 4px 2px rgba(100, 100, 100, 0.3), inset 0px 2px 3px rgba(0, 0, 0, 0.39);
+    backdrop-filter: blur(12px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 10px;
+}
+
+.inventory-header {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    height: 71px;
+}
+
+.inventory-name-title {
+    width: 226px;
+    background: #676767;
+    box-shadow: 0px 4px 2px rgba(133, 133, 133, 0.4), inset 0px 2px 3px rgba(0, 0, 0, 0.39);
+    backdrop-filter: blur(10px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 10px 0px;
+}
+
+.inventory-name {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 35px;
+    letter-spacing: 0.05em;
+    color: #CDCDCD;
+    margin-top: 20px;
+    text-align: center;
+
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.inventory-weight {
+    display: flex;
+    justify-content: center;
+    margin: 5px 10px;
+}
+
+.weight-bar {
+    width: 225px;
+    height: 24px;
+
+    margin-top: 15px;
+
+    background: #676767;
+    box-shadow: 0px 4px 2px rgba(133, 133, 133, 0.4), inset 0px 2px 3px rgba(0, 0, 0, 0.39);
+    backdrop-filter: blur(10px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 15px;
+}
+
+.weight-bar-value {
+    width: 0px; /*TODO  Quando isso aumentar a procentagem muda caso esteja menor que 5px nao mostra*/
+    max-width: 225px;
+    height: 24px;
+
+    box-shadow: 0px 4px 2px rgba(133, 133, 133, 0.4), inset 0px 2px 3px rgba(0, 0, 0, 0.39);
+    backdrop-filter: blur(10px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weight-bar-value-percentage {
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.05em;
+
+
+    color: #CDCDCD;
+
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.weight-bar-kg {
+    width: 44px;
+    height: 22px;
+
+    margin-top: 15px;
+    margin-left: 5px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.05em;
+
+    color: #CDCDCD;
+
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.inventory-close {
+    margin-top: 10px;
+    margin-left: 60px;
+    font-size: 2em;
+    color: #5d5d5d;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.inventory-slots {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-left: 28px;
+    flex-grow:0;
+
+    overflow: scroll;
+    overflow-x: hidden;
+    min-height: 440px;
+    max-height: 440px;
+
+    min-width: 590px;
+    max-width: 600px;
+}
+
+.inventory-slot-block  {
+    height: 100%;
+    flex-grow: 1;
+    text-align: center;
+    padding: 19px 19px 0px 0px;
+}
+
+.inventory-slot-card {
+    width: 126px;
+    height: 126px;
+
+    background: rgba(130, 130, 130, 0.8);
+    box-shadow: 0px 4px 2px rgba(100, 100, 100, 0.3), inset 0px 2px 3px rgba(0, 0, 0, 0.39);
+    backdrop-filter: blur(10px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 10px;
+    overflow: visible;
+}
+
+.inventory-slot-card-title {
+    width: 126px;
+    height: 37px;
+
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+
+    background: rgba(89, 89, 89, 0.64);
+    backdrop-filter: blur(4px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 0px 0px 10px 10px;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.inventory-item-title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #B5B5B5;
+    overflow: hidden;
+
+}
+
+.inventory-item-count {
+    width: 41px;
+    height: 38px;
+
+    float: right;
+    margin-top: -5px;
+    margin-right: -5px;
+
+    background: #666666;
+    box-shadow: 0px 4px 2px rgba(92, 92, 92, 0.24), inset 0px 2px 3px rgba(0, 0, 0, 0.39);
+    backdrop-filter: blur(10px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inventory-item-count-value {
+    width: 16px;
+    height: 16px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 15px;
+    /* identical to box height */
+
+    letter-spacing: 0.05em;
+
+    color: #B5B5B5;
+    text-transform: lowercase;
+
+
+}
+
+.inventory-item-image {
+    height: 100%;
+    width: auto;
+    vertical-align: bottom;
+
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+    margin-right: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    width: 15px;
+    height: 428px;
+
+    background: #6F6F6F;
+    box-shadow: 0px 4px 2px rgba(100, 100, 100, 0.3), inset 0px 2px 3px rgba(0, 0, 0, 0.39);
+    backdrop-filter: blur(10px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 30px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    width: 9px;
+    height: 139px;
+
+    background: #939393;
+    box-shadow: 0px 4px 2px rgba(100, 100, 100, 0.3), inset 0px 2px 3px rgba(0, 0, 0, 0.39);
+    backdrop-filter: blur(10px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 30px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #999999;
+}
+
+::-webkit-scrollbar-button {
+    width: 0px;
+}
