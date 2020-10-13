@@ -4,9 +4,9 @@ local cfg = {}
 cfg.db = {
     driver = "ghmattimysql",
     host = "127.0.0.1",
-    database = "stx00",
+    database = "MuulfzBase",
     user = "root",
-    password = ""
+    password = "macaco123"
 }
 
 cfg.save_interval = 60 -- seconds

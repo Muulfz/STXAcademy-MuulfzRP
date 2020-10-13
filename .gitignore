@@ -445,5 +445,5 @@ MigrationBackup/
 # Local History for Visual Studio Code
 .history/
 
-server.cfg
 resources/GHMattiMySQL/settings.xml
+_bin

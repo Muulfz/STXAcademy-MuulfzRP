@@ -22,7 +22,7 @@ function vRP.defInventoryItem(idname, name, description, choices, weight,imgUrl,
         model = 2491058022
     end
 
-    local item = { name = name, description = description, choices = choices, weight = weight, , img = imgUrl, model = model }
+    local item = { name = name, description = description, choices = choices, weight = weight, img = imgUrl, model = model }
 
     vRP.items[idname] = item
 end
@@ -390,7 +390,7 @@ end
 AddEventHandler("vRP:playerJoin", function(user_id, source, name, last_login)
     local data = vRP.getUserDataTable(user_id)
     if not data.inventory then
-        data.inventory = vRP.Inventory:new("Personal",90)
+        data.inventory = {}
     end
 end)
 

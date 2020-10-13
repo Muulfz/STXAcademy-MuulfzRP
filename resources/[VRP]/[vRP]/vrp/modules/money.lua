@@ -8,7 +8,7 @@ local lang = vRP.lang
 
 vRP.prepare("vRP/money_init_user", "INSERT IGNORE INTO vrp_user_moneys(user_id,wallet,bank) VALUES(@user_id,@wallet,@bank)")
 vRP.prepare("vRP/get_money", "SELECT wallet,bank FROM vrp_user_moneys WHERE user_id = @user_id")
-vRP.prepare("vRP/set_money", ".UPDATE vrp_user_moneys SET wallet = @wallet, bank = @bank WHERE user_id = @user_id")
+vRP.prepare("vRP/set_money", "UPDATE vrp_user_moneys SET wallet = @wallet, bank = @bank WHERE user_id = @user_id")
 
 vRP.prepare("vRP/get_bank_money", "SELECT bank FROM vrp_user_moneys WHERE user_id = @user_id")
 vRP.prepare("vRP/set_bank_money", "UPDATE vrp_user_moneys SET bank = @value WHERE user_id = @user_id")
