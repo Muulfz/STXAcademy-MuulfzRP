@@ -17,6 +17,7 @@ end
 -- veh: vehicle game id
 -- return owner_user_id, vname (or nil if not managed by vRP)
 function tvRP.getVehicleInfos(veh)
+    tvRP.deprecate("tvRP.getVehicleInfos")
     if veh and DecorExistOn(veh, "vRP_owner") and DecorExistOn(veh, "vRP_vmodel") then
         local user_id = DecorGetInt(veh, "vRP_owner")
         local vmodel = DecorGetInt(veh, "vRP_vmodel")
@@ -29,6 +30,7 @@ function tvRP.getVehicleInfos(veh)
 end
 
 function tvRP.spawnGarageVehicle(name, pos)
+    tvRP.deprecate("tvRP.spawnGarageVehicle")
     -- one vehicle per vname/model allowed at the same time
 
     local vehicle = vehicles[name]
@@ -72,6 +74,7 @@ function tvRP.spawnGarageVehicle(name, pos)
 end
 
 function tvRP.despawnGarageVehicle(name)
+    tvRP.deprecate("tvRP.despawnGarageVehicle")
     local vehicle = vehicles[name]
     if vehicle then
         -- remove vehicle
@@ -187,6 +190,7 @@ end
 
 -- return ok,x,y,z
 function tvRP.getAnyOwnedVehiclePosition()
+    tvRP.deprecate("tvRP.getAnyOwnedVehiclePosition")
     for k, v in pairs(vehicles) do
         if IsEntityAVehicle(v[2]) then
             local x, y, z = table.unpack(GetEntityCoords(v[2], true))
@@ -199,6 +203,7 @@ end
 
 -- return x,y,z
 function tvRP.getOwnedVehiclePosition(name)
+    tvRP.deprecate("tvRP.getOwnedVehiclePosition")
     local vehicle = vehicles[name]
     local x, y, z = 0, 0, 0
 
@@ -211,6 +216,7 @@ end
 
 -- return owned vehicle handle or nil if not found
 function tvRP.getOwnedVehicleHandle(name)
+    tvRP.deprecate("tvRP.getOwnedVehicleHandle")
     local vehicle = vehicles[name]
     if vehicle then
         return vehicle[2]
@@ -233,6 +239,7 @@ end
 
 -- vehicle commands
 function tvRP.vc_openDoor(name, door_index)
+    tvRP.deprecate("tvRP.vc_openDoor")
     local vehicle = vehicles[name]
     if vehicle then
         SetVehicleDoorOpen(vehicle[2], door_index, 0, false)
@@ -240,6 +247,7 @@ function tvRP.vc_openDoor(name, door_index)
 end
 
 function tvRP.vc_closeDoor(name, door_index)
+    tvRP.deprecate("tvRP.vc_closeDoor")
     local vehicle = vehicles[name]
     if vehicle then
         SetVehicleDoorShut(vehicle[2], door_index)
@@ -247,6 +255,7 @@ function tvRP.vc_closeDoor(name, door_index)
 end
 
 function tvRP.vc_detachTrailer(name)
+    tvRP.deprecate("tvRP.vc_detachTrailer")
     local vehicle = vehicles[name]
     if vehicle then
         DetachVehicleFromTrailer(vehicle[2])
@@ -254,6 +263,7 @@ function tvRP.vc_detachTrailer(name)
 end
 
 function tvRP.vc_detachTowTruck(name)
+    tvRP.deprecate("tvRP.vc_detachTowTruck")
     local vehicle = vehicles[name]
     if vehicle then
         local ent = GetEntityAttachedToTowTruck(vehicle[2])
@@ -264,6 +274,7 @@ function tvRP.vc_detachTowTruck(name)
 end
 
 function tvRP.vc_detachCargobob(name)
+    tvRP.deprecate("tvRP.vc_detachCargobob")
     local vehicle = vehicles[name]
     if vehicle then
         local ent = GetVehicleAttachedToCargobob(vehicle[2])
@@ -274,6 +285,7 @@ function tvRP.vc_detachCargobob(name)
 end
 
 function tvRP.vc_toggleEngine(name)
+    tvRP.deprecate("tvRP.vc_toggleEngine")
     local vehicle = vehicles[name]
     if vehicle then
         local running = Citizen.InvokeNative(0xAE31E7DF9B5B132E, vehicle[2]) -- GetIsVehicleEngineRunning
@@ -287,6 +299,7 @@ function tvRP.vc_toggleEngine(name)
 end
 
 function tvRP.vc_toggleLock(name)
+    tvRP.deprecate("tvRP.vc_toggleLock")
     local vehicle = vehicles[name]
     if vehicle then
         local veh = vehicle[2]

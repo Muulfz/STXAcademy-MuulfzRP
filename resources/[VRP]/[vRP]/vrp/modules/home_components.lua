@@ -104,7 +104,7 @@ end
 
 vRP.defHomeComponent("wardrobe", wardrobe_create, wardrobe_destroy)
 
--- GAMETABLE
+-- GAMETABLE --TODO foi removido trocar por outros tipos de mini games
 
 local function gametable_create(owner_id, stype, sid, cid, config, data, x, y, z, player)
     local gametable_enter = function(player, area)

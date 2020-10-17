@@ -22,6 +22,7 @@ function tvRP.setFriendlyFire(flag)
 end
 
 function tvRP.setPolice(flag)
+    tvRP.deprecate("tvRP.setPolice")
     local player = PlayerId()
     SetPoliceIgnorePlayer(player, not flag)
     SetDispatchCopsForPlayer(player, flag)

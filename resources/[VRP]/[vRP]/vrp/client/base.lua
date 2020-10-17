@@ -5,6 +5,7 @@ local Proxy = module("vrp", "lib/Proxy")
 local Tools = module("vrp", "lib/Tools")
 
 tvRP = {}
+debug = true;
 local players = {} -- keep track of connected players (server id)
 
 -- bind client tunnel interface
@@ -18,6 +19,15 @@ Proxy.addInterface("vRP", tvRP)
 
 -- functions
 
+function tvRP.debug(string)
+    if debug then
+        print("[Muulfz Debug] " ..string )
+    end
+end
+
+function tvRP.deprecate(functionName)
+    tvRP.debug("Deprecated Function {"..functionName.."}")
+end
 local user_id
 function tvRP.setUserId(_user_id)
     user_id = _user_id
@@ -80,6 +90,7 @@ function tvRP.removePlayer(player)
 end
 
 function tvRP.getPlayers()
+    tvRP.deprecate("tvRP.getPlayers")
     return players
 end
 
@@ -154,6 +165,7 @@ end
 -- name, see https://wiki.fivem.net/wiki/Screen_Effects
 -- duration: in seconds, if -1, will play until stopScreenEffect is called
 function tvRP.playScreenEffect(name, duration)
+    tvRP.deprecate("tvRP.playScreenEffect")
     if duration < 0 then
         -- loop
         StartScreenEffect(name, 0, true)
@@ -171,6 +183,7 @@ end
 -- stop a screen effect
 -- name, see https://wiki.fivem.net/wiki/Screen_Effects
 function tvRP.stopScreenEffect(name)
+    tvRP.deprecate("tvRP.stopScreenEffect")
     StopScreenEffect(name)
 end
 
@@ -281,10 +294,11 @@ local ragdoll = false
 
 -- set player ragdoll flag (true or false)
 function tvRP.setRagdoll(flag)
+    tvRP.deprecate("tvRP.setRagdoll")
     ragdoll = flag
 end
 
--- ragdoll thread
+-- ragdoll thread -- TODO deprecate
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(10)
@@ -301,12 +315,13 @@ end)
 
 -- play sound at a specific position
 function tvRP.playSpatializedSound(dict, name, x, y, z, range)
+    tvRP.deprecate("tvRP.playSpatializedSound")
     PlaySoundFromCoord(-1, name, x + 0.0001, y + 0.0001, z + 0.0001, dict, 0, range + 0.0001, 0)
 end
 
 -- play sound
 function tvRP.playSound(dict, name)
-    PlaySound(-1, name, dict, 0, 0, 1)
+    PlaySoundFrontend(-1, dict, name,false)
 end
 
 --[[
@@ -335,7 +350,7 @@ AddEventHandler("onPlayerKilled", function(player, killer, reason)
 end)
 
 -- voice proximity computation
-Citizen.CreateThread(function()
+Citizen.CreateThread(function() --TODO Modificar voip
     while true do
         Citizen.Wait(500)
         if cfg.vrp_voip then

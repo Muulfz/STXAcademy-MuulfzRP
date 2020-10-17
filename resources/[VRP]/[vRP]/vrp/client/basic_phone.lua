@@ -2,6 +2,7 @@ local player_called
 local in_call = false
 
 function tvRP.phoneCallWaiting(player, waiting)
+    tvRP.deprecate("Basic Phone")
     if waiting then
         player_called = player
     else
@@ -10,12 +11,14 @@ function tvRP.phoneCallWaiting(player, waiting)
 end
 
 function tvRP.phoneHangUp()
+    tvRP.deprecate("Basic Phone")
     tvRP.disconnectVoice("phone", nil)
 end
 
 -- phone channel behavior
 tvRP.registerVoiceCallbacks("phone", function(player)
     print("(vRPvoice-phone) requested by " .. player)
+    tvRP.deprecate("Basic Phone")
     if player == player_called then
         player_called = nil
         return true
@@ -38,6 +41,7 @@ end,
 
 AddEventHandler("vRP:NUIready", function()
     -- phone channel config
+    tvRP.deprecate("Basic Phone")
     tvRP.configureVoice("phone", cfg.phone_voice_config)
 end)
 

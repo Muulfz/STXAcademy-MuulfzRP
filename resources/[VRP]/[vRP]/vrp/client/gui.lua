@@ -96,16 +96,19 @@ end
 
 -- set progress bar value in percent
 function tvRP.setProgressBarValue(name, value)
+    tvRP.deprecate("tvRP.setProgressBarValue")
     SendNUIMessage({ act = "set_pbar_val", name = name, value = value })
 end
 
 -- set progress bar text
 function tvRP.setProgressBarText(name, text)
+    tvRP.deprecate("tvRP.setProgressBarText")
     SendNUIMessage({ act = "set_pbar_text", name = name, text = text })
 end
 
 -- remove a progress bar
 function tvRP.removeProgressBar(name)
+    tvRP.deprecate("tvRP.removeProgressBar")
     SendNUIMessage({ act = "remove_pbar", name = name })
 end
 
@@ -147,6 +150,7 @@ end
 --- x,y,z: position (omit for unspatialized)
 --- max_dist  (omit for unspatialized)
 function tvRP.playAudioSource(url, volume, x, y, z, max_dist)
+    tvRP.deprecate("tvRP.playAudioSource")
     SendNUIMessage({ act = "play_audio_source", url = url, x = x, y = y, z = z, volume = volume, max_dist = max_dist })
 end
 
@@ -157,11 +161,13 @@ end
 --- x,y,z: position (omit for unspatialized)
 --- max_dist  (omit for unspatialized)
 function tvRP.setAudioSource(name, url, volume, x, y, z, max_dist)
+    tvRP.deprecate("tvRP.setAudioSource")
     SendNUIMessage({ act = "set_audio_source", name = name, url = url, x = x, y = y, z = z, volume = volume, max_dist = max_dist })
 end
 
 -- remove named audio source
 function tvRP.removeAudioSource(name)
+    tvRP.deprecate("tvRP.removeAudioSource")
     SendNUIMessage({ act = "remove_audio_source", name = name })
 end
 
@@ -188,13 +194,16 @@ end)
 
 local channel_callbacks = {}
 local voice_channels = {}
+local voip_enable = false --TODO tornar isso mais dinamico
 
 function tvRP.setPeerConfiguration(config)
+    tvRP.deprecate("Voip")
     SendNUIMessage({ act = "set_peer_configuration", config = config })
 end
 
 -- request connection to another player for a specific channel
 function tvRP.connectVoice(channel, player)
+    tvRP.deprecate("Voip")
     -- register channel/player
     local _channel = voice_channels[channel]
     if not _channel then
@@ -211,6 +220,7 @@ end
 -- disconnect from another player for a specific channel
 -- player: nil to disconnect from all players
 function tvRP.disconnectVoice(channel, player)
+    tvRP.deprecate("Voip")
     SendNUIMessage({ act = "disconnect_voice", channel = channel, player = player })
 end
 
@@ -219,6 +229,7 @@ end
 --- on_connect(player, is_origin): is_origin is true if it's the local peer (not an answer)
 --- on_disconnect(player)
 function tvRP.registerVoiceCallbacks(channel, on_offer, on_connect, on_disconnect)
+    tvRP.deprecate("Voip")
     if not channel_callbacks[channel] then
         channel_callbacks[channel] = { on_offer, on_connect, on_disconnect }
     else
@@ -228,6 +239,7 @@ end
 
 -- check if there is an active connection
 function tvRP.isVoiceConnected(channel, player)
+    tvRP.deprecate("Voip")
     local channel = voice_channels[channel]
     if channel then
         return channel[player] == 1
@@ -236,6 +248,7 @@ end
 
 -- check if there is a pending connection
 function tvRP.isVoiceConnecting(channel, player)
+    tvRP.deprecate("Voip")
     local channel = voice_channels[channel]
     if channel then
         return channel[player] == 0
@@ -244,6 +257,7 @@ end
 
 -- return connections (map of channel => map of player => state (0-1))
 function tvRP.getVoiceChannels()
+    tvRP.deprecate("Voip")
     return voice_channels
 end
 
@@ -251,6 +265,7 @@ end
 --- player: nil to affect all channel peers
 --- active: true/false 
 function tvRP.setVoiceState(channel, player, active)
+    tvRP.deprecate("Voip")
     SendNUIMessage({ act = "set_voice_state", channel = channel, player = player, active = active })
 end
 
@@ -262,10 +277,12 @@ end
 ------ freq = 1700, Q = 3, type = "bandpass" (idea for radio effect)
 ----- gain => { gain: ... }
 function tvRP.configureVoice(channel, config)
+    tvRP.deprecate("Voip")
     SendNUIMessage({ act = "configure_voice", channel = channel, config = config })
 end
 
 RegisterNUICallback("audio", function(data, cb)
+    tvRP.deprecate("Voip")
     if data.act == "voice_connected" then
         -- register channel/player
         local channel = voice_channels[data.channel]
@@ -305,6 +322,7 @@ end)
 
 -- receive voice peer signal
 function tvRP.signalVoicePeer(player, data)
+    tvRP.deprecate("Voip")
     if data.sdp_offer then
         -- check offer
         -- register channel/player
@@ -333,10 +351,12 @@ end
 
 local speaking = false
 function tvRP.isSpeaking()
+    tvRP.deprecate("Voip")
     return speaking
 end
 
 if cfg.vrp_voip then
+    tvRP.deprecate("Voip")
     -- setup voip world channel
     -- world channel behavior
     tvRP.registerVoiceCallbacks("world", function(player)
@@ -357,13 +377,13 @@ if cfg.vrp_voip then
             return (distance <= cfg.voip_proximity * 1.5) -- valid connection
         end
     end,
-            function(player, is_origin)
-                print("(vRPvoice-world) connected to " .. player)
-                tvRP.setVoiceState("world", nil, speaking)
-            end,
-            function(player)
-                print("(vRPvoice-world) disconnected from " .. player)
-            end)
+                                function(player, is_origin)
+                                    print("(vRPvoice-world) connected to " .. player)
+                                    tvRP.setVoiceState("world", nil, speaking)
+                                end,
+                                function(player)
+                                    print("(vRPvoice-world) disconnected from " .. player)
+                                end)
 
     AddEventHandler("vRP:NUIready", function()
         -- world channel config
@@ -371,14 +391,12 @@ if cfg.vrp_voip then
     end)
 end
 
-
-
 -- detect players near, give positions to AudioEngine
 Citizen.CreateThread(function()
     local n = 0
     local ns = math.ceil(cfg.voip_interval / listener_wait) -- connect/disconnect every x milliseconds
 
-    while true do
+    while voip_enable do
         Citizen.Wait(listener_wait)
 
         n = n + 1
@@ -438,21 +456,27 @@ Citizen.CreateThread(function()
         Citizen.Wait(0)
         -- menu controls
         if IsControlJustPressed(table.unpack(cfg.controls.phone.up)) then
+            tvRP.deprecate("cfg.controls.phone")
             SendNUIMessage({ act = "event", event = "UP" })
         end
         if IsControlJustPressed(table.unpack(cfg.controls.phone.down)) then
+            tvRP.deprecate("cfg.controls.phone")
             SendNUIMessage({ act = "event", event = "DOWN" })
         end
         if IsControlJustPressed(table.unpack(cfg.controls.phone.left)) then
+            tvRP.deprecate("cfg.controls.phone")
             SendNUIMessage({ act = "event", event = "LEFT" })
         end
         if IsControlJustPressed(table.unpack(cfg.controls.phone.right)) then
+            tvRP.deprecate("cfg.controls.phone")
             SendNUIMessage({ act = "event", event = "RIGHT" })
         end
         if IsControlJustPressed(table.unpack(cfg.controls.phone.select)) then
+            tvRP.deprecate("cfg.controls.phone")
             SendNUIMessage({ act = "event", event = "SELECT" })
         end
         if IsControlJustPressed(table.unpack(cfg.controls.phone.cancel)) then
+            tvRP.deprecate("cfg.controls.phone")
             SendNUIMessage({ act = "event", event = "CANCEL" })
         end
 
@@ -463,9 +487,11 @@ Citizen.CreateThread(function()
 
         -- F5,F6 (default: control michael, control franklin)
         if IsControlJustPressed(table.unpack(cfg.controls.request.yes)) then
+            tvRP.deprecate("cfg.controls.request")
             SendNUIMessage({ act = "event", event = "F5" })
         end
         if IsControlJustPressed(table.unpack(cfg.controls.request.no)) then
+            tvRP.deprecate("cfg.controls.request")
             SendNUIMessage({ act = "event", event = "F6" })
         end
 
@@ -492,3 +518,21 @@ Citizen.CreateThread(function()
     end
 end)
 
+function tvRP.loadAnimSet(dict)
+    --TODO tem uma variante sem o SetMoviment
+    RequestAnimSet(dict)
+    while not HasAnimSetLoaded(dict) do
+        Citizen.Wait(10)
+    end
+    SetPedMovementClipset(PlayerPedId(), dict, 0.25)
+end
+
+function tvRP.loadObject(dict, anim, prop, flag, hand, high, firstPosition, secondPosition, thirdPosition)
+    local ped = PlayerPedId()
+
+    RequestModel(GetHashKey(prop))
+    while not HasModelLoaded(GetHashKey(prop)) do
+        Citzen.Wait(10)
+    end
+
+end

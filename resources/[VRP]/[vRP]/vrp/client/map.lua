@@ -31,6 +31,7 @@ local named_blips = {}
 -- set a named blip (same as addBlip but for a unique name, add or update)
 -- return native id
 function tvRP.setNamedBlip(name, x, y, z, idtype, idcolor, text)
+    tvRP.deprecate("tvRP.setNamedBlip")
     tvRP.removeNamedBlip(name) -- remove old one
 
     named_blips[name] = tvRP.addBlip(x, y, z, idtype, idcolor, text)
@@ -39,6 +40,7 @@ end
 
 -- remove a named blip
 function tvRP.removeNamedBlip(name)
+    tvRP.deprecate("tvRP.removeNamedBlip")
     if named_blips[name] ~= nil then
         tvRP.removeBlip(named_blips[name])
         named_blips[name] = nil
@@ -54,6 +56,7 @@ end
 
 -- set route to native blip id
 function tvRP.setBlipRoute(id)
+    tvRP.deprecate("tvRP.setBlipRoute")
     SetBlipRoute(id, true)
 end
 
@@ -206,6 +209,7 @@ end)
 -- locked: boolean
 -- doorswing: -1 to 1
 function tvRP.setStateOfClosestDoor(doordef, locked, doorswing)
+    tvRP.deprecate("tvRP.setStateOfClosestDoor")
     local x, y, z = tvRP.getPosition()
     local hash = doordef.modelhash
     if hash == nil then
@@ -216,9 +220,11 @@ function tvRP.setStateOfClosestDoor(doordef, locked, doorswing)
 end
 
 function tvRP.openClosestDoor(doordef)
+    tvRP.deprecate("tvRP.openClosestDoor")
     tvRP.setStateOfClosestDoor(doordef, false, 0)
 end
 
 function tvRP.closeClosestDoor(doordef)
+    tvRP.deprecate("tvRP.closeClosestDoor")
     tvRP.setStateOfClosestDoor(doordef, true, 0)
 end

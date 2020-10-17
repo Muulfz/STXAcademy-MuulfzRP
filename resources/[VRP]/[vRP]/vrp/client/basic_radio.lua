@@ -1,16 +1,19 @@
 local rplayers = {} -- radio players that can be accepted
 
 function tvRP.setupRadio(players)
+    tvRP.deprecate("Basic radio")
     rplayers = players
 end
 
 function tvRP.disconnectRadio()
+    tvRP.deprecate("Basic radio")
     rplayers = {}
     tvRP.disconnectVoice("radio", nil)
 end
 
 -- radio channel behavior
 tvRP.registerVoiceCallbacks("radio", function(player)
+    tvRP.deprecate("Basic radio")
     print("(vRPvoice-radio) requested by " .. player)
     return (rplayers[player] ~= nil)
 end,
@@ -22,6 +25,7 @@ end,
         end)
 
 AddEventHandler("vRP:NUIready", function()
+    tvRP.deprecate("Basic radio")
     -- radio channel config
     tvRP.configureVoice("radio", cfg.radio_voice_config)
 end)

@@ -75,6 +75,7 @@ local weapon_types = {
 }
 
 function tvRP.getWeaponTypes()
+    tvRP.deprecate("tvRP.getWeaponTypes")
     return weapon_types
 end
 

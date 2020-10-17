@@ -158,16 +158,19 @@ local jail = nil
 
 -- jail the player in a no-top no-bottom cylinder 
 function tvRP.jail(x, y, z, radius)
+    tvRP.deprecate("tvRP.jail")
     tvRP.teleport(x, y, z) -- teleport to center
     jail = { x + 0.0001, y + 0.0001, z + 0.0001, radius + 0.0001 }
 end
 
 -- unjail the player
 function tvRP.unjail()
+    tvRP.deprecate("tvRP.unjail")
     jail = nil
 end
 
 function tvRP.isJailed()
+    tvRP.deprecate("tvRP.isJailed")
     return jail ~= nil
 end
 
@@ -203,6 +206,7 @@ end)
 local wanted_level = 0
 
 function tvRP.applyWantedLevel(new_wanted)
+    tvRP.deprecate("tvRP.applyWantedLevel")
     Citizen.CreateThread(function()
         local old_wanted = GetPlayerWantedLevel(PlayerId())
         local wanted = math.max(old_wanted, new_wanted)
@@ -216,6 +220,7 @@ end
 
 -- update wanted level
 Citizen.CreateThread(function()
+    tvRP.deprecate("Update Wanted level thread")
     while true do
         Citizen.Wait(2000)
 
@@ -236,6 +241,7 @@ end)
 
 -- detect vehicle stealing
 Citizen.CreateThread(function()
+    tvRP.deprecate("Dtect vehicle stealing")
     while true do
         Citizen.Wait(1)
         local ped = GetPlayerPed(-1)
