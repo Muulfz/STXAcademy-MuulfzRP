@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net461</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Autofac" Version="6.0.0" />
+      <PackageReference Include="AutoMapper" Version="10.1.1" />
+      <PackageReference Include="CitizenFX.Core.Server" Version="1.0.3119" />
+      <PackageReference Include="EntityFramework" Version="6.4.4" />
+      <PackageReference Include="FiveMRemoteCall.Server" Version="20.9.30.212817" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MuulfzRP.Shared\MuulfzRP.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Microsoft.CSharp" />
+    </ItemGroup>
+
+</Project>

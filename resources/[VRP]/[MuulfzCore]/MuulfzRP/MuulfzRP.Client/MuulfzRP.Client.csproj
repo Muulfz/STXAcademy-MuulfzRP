@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net452</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="CitizenFX.Core.Client" Version="1.0.3119" />
+      <PackageReference Include="FiveMDependencyInjection" Version="20.9.28.173135" />
+      <PackageReference Include="FiveMRemoteCall.Client" Version="20.9.30.212817" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net452</TargetFramework>
+        <RootNamespace>MuulfzRP.Core</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FiveMRemoteCall.Shared" Version="20.9.30.212817" />
+    </ItemGroup>
+
+</Project>
