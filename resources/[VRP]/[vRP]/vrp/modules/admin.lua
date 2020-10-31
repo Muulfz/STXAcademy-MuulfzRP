@@ -415,14 +415,14 @@ end
 function vRP.adminCreateDrop(user_id, x, y, z, item_id, item_amount)
     local source = vRP.getUserSource(user_id)
     if source and vRP.hasPermission(user_id, permissions.player.create_drop) then
-        local drop_id = ItemDrop.createDrop(source, vRP.getItemModel(item_id), x, y, z, item_id, item_amount)
+        local drop_id = HudRP.createDrop(source, vRP.getItemModel(item_id), x, y, z, item_id, item_amount)
         vRP.sendChatMessage(source, "Drop Id", {255, 255, 255}, drop_id)
     end
 end
 
 function vRP.adminDeleteDrop(user_id, drop_id)
     if vRP.hasPermission(user_id, permissions.player.delete_drop) then
-        ItemDrop.deleteDrop(drop_id)
+        HudRP.deleteDrop(drop_id)
     end
 end
 -- admin god mode

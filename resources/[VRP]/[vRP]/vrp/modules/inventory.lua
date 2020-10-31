@@ -74,7 +74,7 @@ function ch_trash(idname, player, choice)
             vRPclient._playAnim(player, true, { { "pickup_object", "pickup_low", 1 } }, false)
 
             local x, y, z = vRPclient.getPosition(player)
-            ItemDrop.createDrop(player, vRP.getItemModel(idname), x, y, z, idname, amount)
+            HudRP.createDrop(player, vRP.getItemModel(idname), x, y, z, idname, amount)
         else
             vRPclient._notify(player, lang.common.invalid_value())
         end

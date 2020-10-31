@@ -18,7 +18,7 @@ Lang:loadLocale(config.lang, module("cfg/lang/" .. config.lang) or {})
 vRP.lang = Lang.lang[config.lang]
 
 -- init
-ItemDrop = Proxy.getInterface("stx_itemdrop")
+HudRP = Proxy.getInterface("stx_itemdrop")
 
 vRPclient = Tunnel.getInterface("vRP") -- server -> client tunnel
 

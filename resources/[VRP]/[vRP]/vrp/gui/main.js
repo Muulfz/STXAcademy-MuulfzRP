@@ -18,7 +18,7 @@ window.addEventListener("load", function () {
     var wprompt = new WPrompt();
     var requestmgr = new RequestManager();
     var announcemgr = new AnnounceManager();
-    var aengine = new AudioEngine();
+    /*var aengine = new AudioEngine();*/
 
     requestmgr.onResponse = function (id, ok) {
         $.post("http://vrp/request", JSON.stringify({act: "response", id: id, ok: ok}));
@@ -137,7 +137,7 @@ window.addEventListener("load", function () {
 
             delete divs[data.name];
         }
-        // AUDIO
+        /*// AUDIO
         else if (data.act == "play_audio_source")
             aengine.playAudioSource(data);
         else if (data.act == "set_audio_source")
@@ -162,7 +162,7 @@ window.addEventListener("load", function () {
         else if (data.act == "set_peer_configuration")
             aengine.setPeerConfiguration(data);
         else if (data.act == "set_player_positions")
-            aengine.setPlayerPositions(data);
+            aengine.setPlayerPositions(data);*/
         // CONTROLS
         else if (data.act == "event") { //EVENTS
             if (data.event == "UP") {
