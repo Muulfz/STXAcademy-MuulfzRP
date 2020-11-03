@@ -190,7 +190,7 @@ local revive_seq = {
     { "amb@medic@standing@kneel@exit", "exit", 1 }
 }
 
-local choice_revive = { function(player, choice)
+function vRP.ReviveNeasterPlayer(player)
     local user_id = vRP.getUserId(player)
     if user_id then
         local nplayer = vRPclient.getNearestPlayer(player, 10)
@@ -210,17 +210,4 @@ local choice_revive = { function(player, choice)
             vRPclient._notify(player, lang.common.no_player_near())
         end
     end
-end, lang.emergency.menu.revive.description() }
-
--- add choices to the main menu (emergency)
-vRP.registerMenuBuilder("main", function(add, data)
-    local user_id = vRP.getUserId(data.player)
-    if user_id then
-        local choices = {}
-        if vRP.hasPermission(user_id, "emergency.revive") then
-            choices[lang.emergency.menu.revive.title()] = choice_revive
-        end
-
-        add(choices)
-    end
-end)
+end

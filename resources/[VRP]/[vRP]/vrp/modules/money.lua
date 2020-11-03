@@ -4,8 +4,6 @@ local lang = vRP.lang
 -- The money is managed with direct SQL requests to prevent most potential value corruptions
 -- the wallet empty itself when respawning (after death)
 
-
-
 vRP.prepare("vRP/money_init_user", "INSERT IGNORE INTO vrp_user_moneys(user_id,wallet,bank) VALUES(@user_id,@wallet,@bank)")
 vRP.prepare("vRP/get_money", "SELECT wallet,bank FROM vrp_user_moneys WHERE user_id = @user_id")
 vRP.prepare("vRP/set_money", "UPDATE vrp_user_moneys SET wallet = @wallet, bank = @bank WHERE user_id = @user_id")
@@ -209,43 +207,5 @@ AddEventHandler("vRP:playerSpawn", function(user_id, source, first_spawn)
     if first_spawn then
         -- add money display
         vRPclient._setDiv(source, "money", cfg.display_css, lang.money.display({ vRP.getMoney(user_id) }))
-    end
-end)
-
-local function ch_give(player, choice)
-    -- get nearest player
-    local user_id = vRP.getUserId(player)
-    if user_id then
-        local nplayer = vRPclient.getNearestPlayer(player, 10)
-        if nplayer then
-            local nuser_id = vRP.getUserId(nplayer)
-            if nuser_id then
-                -- prompt number
-                local amount = vRP.prompt(player, lang.money.give.prompt(), "")
-                local amount = parseInt(amount)
-                if amount > 0 and vRP.tryPayment(user_id, amount) then
-                    vRP.giveMoney(nuser_id, amount)
-                    vRPclient._notify(player, lang.money.given({ amount }))
-                    vRPclient._notify(nplayer, lang.money.received({ amount }))
-                else
-                    vRPclient._notify(player, lang.money.not_enough())
-                end
-            else
-                vRPclient._notify(player, lang.common.no_player_near())
-            end
-        else
-            vRPclient._notify(player, lang.common.no_player_near())
-        end
-    end
-end
-
--- add player give money to main menu
-vRP.registerMenuBuilder("main", function(add, data)
-    local user_id = vRP.getUserId(data.player)
-    if user_id then
-        local choices = {}
-        choices[lang.money.give.title()] = { ch_give, lang.money.give.description() }
-
-        add(choices)
     end
 end)

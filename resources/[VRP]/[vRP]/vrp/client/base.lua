@@ -101,20 +101,6 @@ function tvRP.getNearestPlayers(radius)
     local pid = PlayerId()
     local px, py, pz = tvRP.getPosition()
 
-    --[[
-    for i=0,GetNumberOfPlayers()-1 do
-      if i ~= pid then
-        local oped = GetPlayerPed(i)
-
-        local x,y,z = table.unpack(GetEntityCoords(oped,true))
-        local distance = GetDistanceBetweenCoords(x,y,z,px,py,pz,true)
-        if distance <= radius then
-          r[GetPlayerServerId(i)] = distance
-        end
-      end
-    end
-    --]]
-
     for k, v in pairs(players) do
         local player = GetPlayerFromServerId(k)
 

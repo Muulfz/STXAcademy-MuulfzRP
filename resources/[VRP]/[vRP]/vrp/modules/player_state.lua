@@ -65,10 +65,6 @@ AddEventHandler("vRP:playerSpawn", function(user_id, source, first_spawn)
         vRP.setThirst(user_id, 0)
         vRP.clearInventory(user_id)
 
-        if cfg.clear_phone_directory_on_death then
-            data.phone_directory = {} -- clear phone directory after death
-        end
-
         if cfg.lose_aptitudes_on_death then
             data.gaptitudes = {} -- clear aptitudes after death
         end

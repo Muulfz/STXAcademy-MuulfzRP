@@ -16,7 +16,6 @@ client_scripts {
     "lib/utils.lua",
     "client/base.lua",
     "client/iplloader.lua",
-    "client/gui.lua",
     "client/player_state.lua",
     "client/survival.lua",
     "client/map.lua",
@@ -53,21 +52,14 @@ server_scripts {
     "modules/chat.lua",
 
     -- basic implementations
-    "modules/basic_phone.lua",
-    "modules/basic_atm.lua",
-    "modules/basic_market.lua",
     "modules/basic_gunshop.lua",
     "modules/basic_garage.lua",
     "modules/basic_items.lua",
-    "modules/basic_skinshop.lua",
-    "modules/cloakroom.lua",
     "modules/basic_radio.lua",
     "modules/base_menu/*.lua",
     "modules/commands/*.lua",
     "modules/model/*.lua"
 }
-
-ui_page "gui/index.html"
 
 -- client files
 files {
@@ -76,25 +68,7 @@ files {
     "lib/Debug.lua",
     "lib/Luaseq.lua",
     "lib/Tools.lua",
-    "cfg/client.lua",
-    "gui/index.html",
-    "gui/design.css",
-    "gui/main.js",
-    "gui/Menu.js",
-    "gui/ProgressBar.js",
-    "gui/WPrompt.js",
-    "gui/RequestManager.js",
-    "gui/AnnounceManager.js",
-    "gui/Div.js",
-    "gui/dynamic_classes.js",
-    --"gui/AudioEngine.js",
-    --"gui/lib/libopus.wasm.js",
-    "gui/images/voice_active.png",
-    "gui/sounds/phone_dialing.ogg",
-    "gui/sounds/phone_ringing.ogg",
-    "gui/sounds/phone_sms.ogg",
-    "gui/sounds/radio_on.ogg",
-    "gui/sounds/radio_off.ogg"
+    "cfg/client.lua"
 }
 
 

@@ -7,15 +7,11 @@ local sanitizes = module("cfg/sanitizes")
 
 -- this module describe the identity system
 
-
-
 vRP.prepare("vRP/get_user_identity", "SELECT * FROM vrp_user_identities WHERE user_id = @user_id")
 vRP.prepare("vRP/init_user_identity", "INSERT IGNORE INTO vrp_user_identities(user_id,registration,phone,firstname,name,age) VALUES(@user_id,@registration,@phone,@firstname,@name,@age)")
 vRP.prepare("vRP/update_user_identity", "UPDATE vrp_user_identities SET firstname = @firstname, name = @name, age = @age, registration = @registration, phone = @phone WHERE user_id = @user_id")
 vRP.prepare("vRP/get_userbyreg", "SELECT user_id FROM vrp_user_identities WHERE registration = @registration")
 vRP.prepare("vRP/get_userbyphone", "SELECT user_id FROM vrp_user_identities WHERE phone = @phone")
-
-
 
 -- api
 

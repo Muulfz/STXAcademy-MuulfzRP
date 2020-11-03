@@ -87,22 +87,6 @@ function tvRP.despawnGarageVehicle(name)
     end
 end
 
--- check vehicles validity
---[[
-Citizen.CreateThread(function()
-  Citizen.Wait(30000)
-
-  for k,v in pairs(vehicles) do
-    if IsEntityAVehicle(v[3]) then -- valid, save position
-      v.pos = {table.unpack(GetEntityCoords(vehicle[3],true))}
-    elseif v.pos then -- not valid, respawn if with a valid position
-      print("[vRP] invalid vehicle "..v[1]..", respawning...")
-      tvRP.spawnGarageVehicle(v[1], v[2], v.pos)
-    end
-  end
-end)
---]]
-
 -- (experimental) this function return the nearest vehicle
 -- (don't work with all vehicles, but aim to)
 function tvRP.getNearestVehicle(radius)

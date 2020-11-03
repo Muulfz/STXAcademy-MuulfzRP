@@ -8,7 +8,6 @@ vRP.prepare("vRP/get_home_owner", "SELECT user_id FROM vrp_user_homes WHERE home
 vRP.prepare("vRP/rm_address", "DELETE FROM vrp_user_homes WHERE user_id = @user_id")
 vRP.prepare("vRP/set_address", "REPLACE INTO vrp_user_homes(user_id,home,number) VALUES(@user_id,@home,@number)")
 
-
 -- api
 
 local components = {}
@@ -300,118 +299,10 @@ function vRP.accessHome(user_id, home, number)
     end
 end
 
--- build the home entry menu
-local function build_entry_menu(user_id, home_name)
-    local home = cfg.homes[home_name]
-    local menu = { name = home_name, css = { top = "75px", header_color = "rgba(0,255,125,0.75)" } }
-
-    -- intercom, used to enter in a home
-    menu[lang.home.intercom.title()] = { function(player, choice)
-        local number = vRP.prompt(player, lang.home.intercom.prompt(), "")
-        number = parseInt(number)
-        local huser_id = vRP.getUserByAddress(home_name, number)
-        if huser_id then
-            if huser_id == user_id then
-                -- identify owner (direct home access)
-                if not vRP.accessHome(user_id, home_name, number) then
-                    vRPclient._notify(player, lang.home.intercom.not_available())
-                end
-            else
-                -- try to access home by asking owner
-                local hplayer = vRP.getUserSource(huser_id)
-                if hplayer ~= nil then
-                    local who = vRP.prompt(player, lang.home.intercom.prompt_who(), "")
-                    vRPclient._notify(player, lang.home.intercom.asked())
-                    -- request owner to open the door
-                    if vRP.request(hplayer, lang.home.intercom.request({ who }), 30) then
-                        vRP.accessHome(user_id, home_name, number)
-                    else
-                        vRPclient._notify(player, lang.home.intercom.refused())
-                    end
-                else
-                    vRPclient._notify(player, lang.home.intercom.refused())
-                end
-            end
-        else
-            vRPclient._notify(player, lang.common.not_found())
-        end
-    end, lang.home.intercom.description() }
-
-    menu[lang.home.buy.title()] = { function(player, choice)
-        local address = vRP.getUserAddress(user_id)
-        if not address then
-            -- check if not already have a home
-            local number = vRP.findFreeNumber(home_name, home.max)
-            if number then
-                if vRP.tryPayment(user_id, home.buy_price) then
-                    -- bought, set address
-                    vRP.setUserAddress(user_id, home_name, number)
-
-                    vRPclient._notify(player, lang.home.buy.bought())
-                else
-                    vRPclient._notify(player, lang.money.not_enough())
-                end
-            else
-                vRPclient._notify(player, lang.home.buy.full())
-            end
-        else
-            vRPclient._notify(player, lang.home.buy.have_home())
-        end
-    end, lang.home.buy.description({ home.buy_price }) }
-
-    menu[lang.home.sell.title()] = { function(player, choice)
-        local address = vRP.getUserAddress(user_id)
-        if address and address.home == home_name then
-            -- check if already have a home
-            -- sold, give sell price, remove address
-            vRP.giveMoney(user_id, home.sell_price)
-            vRP.removeUserAddress(user_id)
-            vRPclient._notify(player, lang.home.sell.sold())
-        else
-            vRPclient._notify(player, lang.home.sell.no_home())
-        end
-    end, lang.home.sell.description({ home.sell_price }) }
-
-    return menu
-end
-
--- build homes entry points
-local function build_client_homes(source)
-    local user_id = vRP.getUserId(source)
-    if user_id then
-        for k, v in pairs(cfg.homes) do
-            local x, y, z = table.unpack(v.entry_point)
-
-            local function entry_enter(player, area)
-                local user_id = vRP.getUserId(player)
-                if user_id and vRP.hasPermissions(user_id, v.permissions or {}) then
-                    vRP.openMenu(source, build_entry_menu(user_id, k))
-                end
-            end
-
-            local function entry_leave(player, area)
-                vRP.closeMenu(player)
-            end
-
-            vRPclient._addBlip(source, x, y, z, v.blipid, v.blipcolor, k)
-            vRPclient._addMarker(source, x, y, z - 1, 0.7, 0.7, 0.5, 0, 255, 125, 125, 150)
-
-            vRP.setArea(source, "vRP:home" .. k, x, y, z, 1, 1.5, entry_enter, entry_leave)
-        end
-    end
-end
-
 AddEventHandler("vRP:playerSpawn", function(user_id, source, first_spawn)
-    if first_spawn then
-        -- first spawn, build homes
-        build_client_homes(source)
-    else
-        -- death, leave home if inside one
-        -- leave slot if inside one
-        local tmp = vRP.getUserTmpTable(user_id)
-        if tmp and tmp.home_stype then
-            leave_slot(user_id, source, tmp.home_stype, tmp.home_sid)
-        end
+    local tmp = vRP.getUserTmpTable(user_id)
+    if tmp and tmp.home_stype then
+        leave_slot(user_id, source, tmp.home_stype, tmp.home_sid)
     end
 end)
 

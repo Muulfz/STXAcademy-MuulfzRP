@@ -28,6 +28,17 @@ function tvRP.setPolice(flag)
     SetDispatchCopsForPlayer(player, flag)
 end
 
+function tvRP.isInComa()
+    return in_coma
+end
+
+-- kill the player if in coma
+function tvRP.killComa()
+    if in_coma then
+        coma_left = 0
+    end
+end
+
 -- impact thirst and hunger when the player is running (every 5 seconds)
 Citizen.CreateThread(function()
     while true do
@@ -132,17 +143,6 @@ Citizen.CreateThread(function()
         end
     end
 end)
-
-function tvRP.isInComa()
-    return in_coma
-end
-
--- kill the player if in coma
-function tvRP.killComa()
-    if in_coma then
-        coma_left = 0
-    end
-end
 
 Citizen.CreateThread(function()
     -- coma decrease thread

@@ -56,7 +56,7 @@ function vRP.nextMissionStep(player)
                     onleave = step.onleave
                 end
 
-                -- display
+                -- display --TODO Remover isso
                 vRPclient._setDivContent(player, "mission", lang.mission.display({ tmpdata.mission_data.name, tmpdata.mission_step - 1, #tmpdata.mission_data.steps, step.text }))
 
                 -- blip/route
@@ -99,18 +99,4 @@ function vRP.hasMission(player)
     return false
 end
 
--- MAIN MENU
-vRP.registerMenuBuilder("main", function(add, data)
-    local player = data.player
-    local user_id = vRP.getUserId(player)
-    if user_id then
-        local choices = {}
-
-        -- build admin menu
-        choices[lang.mission.cancel.title()] = { function(player, choice)
-            vRP.stopMission(player)
-        end }
-
-        add(choices)
-    end
-end)
+-- Cancel Mission
