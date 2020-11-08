@@ -202,7 +202,7 @@ html, body {
     height: 75px;
     right: 0;
     top: 35%;
-    background-image: url("images/voice_active.png");
+    background-image: url("oldInterface/images/voice_active.png");
     display: none;
 }
 

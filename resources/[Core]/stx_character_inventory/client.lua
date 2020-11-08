@@ -10,7 +10,6 @@ Tunnel.bindInterface("stx_character_inventory", t_stx_character_inventory)
 t_stx_character_inventory = Tunnel.getInterface("stx_character_inventory")
 
 function t_stx_character_inventory.OpenInventory(inventory)
-    print("checgou")
     print(json.encode(inventory))
     SendNUIMessage({
         event = "CreateNewInventory",
