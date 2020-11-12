@@ -68,7 +68,32 @@ files {
     "lib/Debug.lua",
     "lib/Luaseq.lua",
     "lib/Tools.lua",
-    "cfg/client.lua"
+    "cfg/client.lua",
+    "gui/static/js/*.js",
+    "gui/static/js/*.js.map",
+    "gui/asset-manifest.json",
+    "gui/*.js",
+    "gui/index.html",
+    "gui/oldInterface/*.js",
+    "gui/oldInterface/*.css"
+--[[    "gui/index.html",
+    "gui/design.css",
+    "gui/main.js",
+    "gui/Menu.js",
+    "gui/ProgressBar.js",
+    "gui/WPrompt.js",
+    "gui/RequestManager.js",
+    "gui/AnnounceManager.js",
+    "gui/Div.js",
+    "gui/dynamic_classes.js",
+    --"gui/AudioEngine.js",
+    --"gui/lib/libopus.wasm.js",
+    "gui/images/voice_active.png",
+    "gui/sounds/phone_dialing.ogg",
+    "gui/sounds/phone_ringing.ogg",
+    "gui/sounds/phone_sms.ogg",
+    "gui/sounds/radio_on.ogg",
+    "gui/sounds/radio_off.ogg"]]
 }
 
 
